@@ -1,11 +1,11 @@
-org: marcos1001
+org: geraldocolchado
 service: api-alumnos
 
 provider:
   name: aws
   runtime: python3.12
   iam:
-    role: arn:aws:iam::334600067176:role/LabRole
+    role: arn:aws:iam::498917627164:role/LabRole
 
 functions:
   listar:
@@ -16,6 +16,12 @@ functions:
           method: post
           cors: true
           integration: lambda
-
-
+  crear:
+    handler: CrearAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/crear
+          method: post
+          cors: true
+          integration: lambda
 
